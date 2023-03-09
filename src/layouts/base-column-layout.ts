@@ -90,7 +90,7 @@ export class BaseColumnLayout extends BaseLayout {
         --column-max-width: ${column_max_width}px;
         --column-width: ${column_width}px;
         --column-widths: ${this._config.layout?.column_widths ?? "none"};
-        --layout-margin: ${this._config.layout?.margin ?? "4px 4px 0px 4px"};
+        --layout-margin: ${this._config.layout?.margin ?? "4px 0px 0px 0px"};
         --layout-padding: ${this._config.layout?.padding ?? "0px"};
         --card-margin: ${
           this._config.layout?.card_margin ??
@@ -101,17 +101,15 @@ export class BaseColumnLayout extends BaseLayout {
           this._config.layout?.height !== undefined ? "auto" : "visible"
         };
       }
-      @media (max-width: ${column_max_width}px) {
-        .column:first-child > * {
-          margin-left: 0;
-        }
-        .column:last-child > * {
-          margin-right: 0;
-        }
+      .column:first-child > * {
+        margin-left: 0;
       }
-      @media (max-width: ${column_two_width - 1}px) {
-        .column {
-          --column-max-width: ${column_two_width}px;
+      .column:last-child > * {
+        margin-right: 0;
+      }
+      @media (max-width: 616px) or ((min-width: 1028px) and (max-width: 1128px)) {
+        :host {
+          --column-max-width: 608px;
         }
       }
     `;
